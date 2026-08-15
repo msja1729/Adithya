@@ -249,6 +249,50 @@ ul {
   color: var(--accent);
 }
 
+.hero-intro {
+  margin-top: 1.25rem;
+  max-width: 60ch;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* ---------- Education ---------- */
+
+.education {
+  margin-top: 2rem;
+}
+
+.education-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.education-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.education-degree {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.education-detail {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
 .hero-facts {
   margin-top: 2rem;
   display: flex;
@@ -420,7 +464,7 @@ ul {
   margin: 3rem 0 1.5rem;
 }
 
-/* ---------- Personal Interests (placeholder) ---------- */
+/* ---------- Hobbies (placeholder) ---------- */
 
 .placeholder-note {
   color: var(--text-muted);

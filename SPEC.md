@@ -49,7 +49,7 @@ Build a personal portfolio website for **Mitnala Shiva Jyothiradithya**, B.Tech 
   2. Experience
   3. Projects
   4. Achievements
-  5. Personal Interests
+  5. Hobbies
 - **Behavior:** Single-page layout — each tab is an anchor link (`#about`, `#experience`, etc.) that smooth-scrolls to the corresponding section on the same page (no separate pages/routes).
 - **Active state:** The current section's tab should be visually highlighted (e.g. accent-colored underline or bold text) as the user scrolls.
 
@@ -58,8 +58,12 @@ Build a personal portfolio website for **Mitnala Shiva Jyothiradithya**, B.Tech 
 ### 7.1 About
 - Name: Mitnala Shiva Jyothiradithya
 - Contact: jyothiradit1@iisc.ac.in · github.com/msja1729 · Bengaluru, India
-- Degree: B.Tech in Mathematics and Computing, Indian Institute of Science (2024–2028), CGPA 8.92 (through Semester 4)
-- Prior academics: Class XII (Board of Intermediate Education, AP) — 99.1%, Sri Chaitanya Junior College, 2024; Class X (CBSE) — 98.4%, Montessori Indus EM Primary School, 2022
+- **Introduction (new short paragraph, rendered directly under the name/title, above everything else in this section):** A brief, warm self-introduction along these lines — "I'm Mitnala Shiva Jyothiradithya, currently pursuing my B.Tech in Mathematics and Computing (3rd year) at the Indian Institute of Science, Bengaluru. I'm interested in Machine Learning, RAG pipelines, and RL pipelines, among other areas, and I'm currently exploring the fields of Computer Systems Security and High-Performance Computing (HPC)." Keep it to 2–3 sentences, first-person, friendly but professional tone — no bullet points.
+- **Education sub-section (new, rendered directly below the introduction, replacing the Degree/Class XII/Class X rows that used to live in the facts list):** A short "Education" heading followed by three compact entries:
+  - B.Tech, Mathematics and Computing — Indian Institute of Science (2024–2028), CGPA 8.92 (through Semester 4)
+  - Class XII — Board of Intermediate Education, **AP State Board** — 99.1%, Sri Chaitanya Junior College, 2024
+  - Class X — **CBSE** — 98.4%, Montessori Indus EM Primary School, 2022
+- Remaining facts list (Location, Languages) stays as-is below the Education sub-section.
 - Languages: English, Telugu, Hindi
 - Technical Skills:
   - Programming: Python (NumPy, SciPy, Matplotlib, PyTorch), C++ (STL), Lean
@@ -101,7 +105,7 @@ Build a personal portfolio website for **Mitnala Shiva Jyothiradithya**, B.Tech 
     - Explained the role of stochastic matrices, stationary distributions, and eigenvectors in ranking.
     - Discussed convergence guarantees using the ergodic theorem and irreducibility assumptions, and analyzed the effect of the damping factor on convergence speed and ranking stability.
 
-### 7.5 Personal Interests
+### 7.5 Hobbies
 - **Content TBD** — this section is a placeholder for now. Render it with a heading and a "Coming soon" / placeholder note so the section is visibly present and easy to fill in later.
 
 ### 7.6 Courses (optional supplementary content)
@@ -115,5 +119,5 @@ Build a personal portfolio website for **Mitnala Shiva Jyothiradithya**, B.Tech 
 ## 9. Out of Scope / Open Questions
 
 - No backend, contact form submission, or CMS — content is static and hand-authored in HTML.
-- Personal Interests content to be supplied later (Section 7.5).
+- Hobbies content to be supplied later (Section 7.5).
 - Exact hex values for background/accent color and font choice are implementation details left to the build step, within the ranges given in Section 4.
