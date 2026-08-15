@@ -1,13 +1,14 @@
 :root {
-  --bg: #0a0a0f;
-  --surface: #15151d;
-  --surface-hover: #1c1c26;
-  --border: #26262f;
-  --text: #e8e6f0;
-  --text-muted: #9d9ab0;
-  --accent: #a855f7;
-  --accent-soft: rgba(168, 85, 247, 0.35);
-  --accent-glow: rgba(168, 85, 247, 0.55);
+  --bg: #ffffff;
+  --surface: #fafafa;
+  --surface-hover: #f3f3f5;
+  --border: #e5e5e5;
+  --text: #1a1a1a;
+  --text-muted: #6b6b70;
+  --accent: #4f46e5;
+  --accent-soft: rgba(79, 70, 229, 0.12);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.1);
   --nav-height: 4.5rem;
 }
 
@@ -51,55 +52,20 @@ ul {
   top: 0;
   z-index: 100;
   height: var(--nav-height);
-  background: rgba(10, 10, 15, 0.55);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(168, 85, 247, 0.12);
-  overflow: hidden;
-}
-
-.navbar::before,
-.navbar::after {
-  content: "";
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  filter: blur(60px);
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.navbar::before {
-  top: -140px;
-  left: -100px;
-  background: var(--accent-glow);
-}
-
-.navbar::after {
-  bottom: -160px;
-  right: -100px;
-  background: var(--accent-glow);
+  border-bottom: 1px solid var(--border);
 }
 
 .navbar-inner {
-  position: relative;
-  z-index: 1;
   max-width: 1200px;
   height: 100%;
   margin: 0 auto;
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-
-.nav-logo {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.05em;
-  color: var(--text);
+  justify-content: center;
 }
 
 .nav-links {
@@ -124,7 +90,6 @@ ul {
   width: 100%;
   height: 2px;
   background: var(--accent);
-  box-shadow: 0 0 8px var(--accent-glow);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.25s ease;
@@ -145,15 +110,15 @@ ul {
   font-weight: 600;
   padding: 0.5rem 1.1rem;
   border-radius: 999px;
-  border: 1px solid var(--accent-soft);
-  color: var(--text);
-  background: rgba(168, 85, 247, 0.08);
-  transition: box-shadow 0.25s ease, background 0.25s ease;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+  transition: box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
 }
 
 .nav-resume:hover {
-  background: rgba(168, 85, 247, 0.18);
-  box-shadow: 0 0 16px var(--accent-soft);
+  background: var(--accent);
+  color: #ffffff;
 }
 
 .nav-toggle {
@@ -213,44 +178,59 @@ ul {
   margin-top: 0.75rem;
   background: var(--accent);
   border-radius: 2px;
-  box-shadow: 0 0 10px var(--accent-glow);
 }
 
 /* ---------- Hero / About ---------- */
 
 .hero {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 4rem;
-  min-height: calc(100vh - var(--nav-height));
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
 
-.hero-photo-wrap {
-  position: relative;
+.hero-photo-col {
   flex-shrink: 0;
-  width: 280px;
-  height: 280px;
-}
-
-.hero-photo-glow {
-  position: absolute;
-  inset: -30px;
-  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-  filter: blur(30px);
-  opacity: 0.7;
-  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  width: 220px;
 }
 
 .hero-photo {
-  position: relative;
-  z-index: 1;
+  width: 220px;
+  height: 220px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: var(--surface);
+  border: 4px solid var(--surface);
+  box-shadow: var(--shadow-hover), 0 0 0 1px var(--border);
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  filter: drop-shadow(0 0 24px var(--accent-soft));
+}
+
+.social-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.social-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .hero-content {
@@ -293,6 +273,42 @@ ul {
   color: var(--text);
 }
 
+/* ---------- Skills ---------- */
+
+.skills {
+  margin-top: 2.5rem;
+}
+
+.skills-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.skills-list li {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.skill-label {
+  min-width: 130px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.skill-value {
+  color: var(--text);
+}
+
 /* ---------- Cards (Experience / Projects) ---------- */
 
 .card {
@@ -300,13 +316,17 @@ ul {
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 2rem;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card + .card {
+  margin-top: 1.5rem;
 }
 
 .card:hover {
-  border-color: var(--accent-soft);
-  background: var(--surface-hover);
-  box-shadow: 0 0 30px -8px var(--accent-soft);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover);
 }
 
 .card-header {
@@ -362,7 +382,6 @@ ul {
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 6px var(--accent-glow);
 }
 
 /* ---------- Achievements ---------- */
@@ -380,6 +399,7 @@ ul {
   border: 1px solid var(--border);
   border-radius: 10px;
   font-size: 0.95rem;
+  box-shadow: var(--shadow);
 }
 
 .achievement-list li::before {
@@ -392,7 +412,12 @@ ul {
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 6px var(--accent-glow);
+}
+
+.subsection-title {
+  font-size: 1.2rem;
+  color: var(--text);
+  margin: 3rem 0 1.5rem;
 }
 
 /* ---------- Personal Interests (placeholder) ---------- */
@@ -407,19 +432,10 @@ ul {
 .footer {
   display: flex;
   justify-content: center;
-  gap: 2rem;
   padding: 3rem 1.5rem 4rem;
   border-top: 1px solid var(--border);
-}
-
-.footer-link {
   color: var(--text-muted);
-  font-size: 0.9rem;
-  transition: color 0.2s ease;
-}
-
-.footer-link:hover {
-  color: var(--accent);
+  font-size: 0.85rem;
 }
 
 /* ---------- Responsive ---------- */
@@ -427,6 +443,7 @@ ul {
 @media (max-width: 768px) {
   .navbar-inner {
     padding: 0 1.25rem;
+    justify-content: flex-end;
   }
 
   .nav-toggle {
@@ -442,8 +459,8 @@ ul {
     align-items: flex-start;
     gap: 1.25rem;
     padding: 1.5rem;
-    background: rgba(10, 10, 15, 0.97);
-    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid var(--border);
     transform: translateY(-8px);
     opacity: 0;
     visibility: hidden;
@@ -464,17 +481,23 @@ ul {
 
   .hero {
     flex-direction: column;
+    align-items: center;
     text-align: center;
     padding-top: 3rem;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
-  .hero-photo-wrap {
-    width: 200px;
-    height: 200px;
+  .hero-photo-col {
+    align-items: center;
+    width: 100%;
   }
 
-  .hero-facts li {
+  .social-links {
+    align-items: center;
+  }
+
+  .hero-facts li,
+  .skills-list li {
     justify-content: center;
   }
 

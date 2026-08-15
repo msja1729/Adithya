@@ -13,10 +13,8 @@
 
 <header class="navbar">
   <div class="navbar-inner">
-    <a href="#about" class="nav-logo">MSJ</a>
-
     <nav class="nav-links" id="navLinks">
-      <a href="#about" class="nav-link">About</a>
+      <a href="#about" class="nav-link">About Me</a>
       <a href="#experience" class="nav-link">Experience</a>
       <a href="#projects" class="nav-link">Projects</a>
       <a href="#achievements" class="nav-link">Achievements</a>
@@ -35,26 +33,54 @@
 <main>
 
   <section id="about" class="section hero">
-    <div class="hero-photo-wrap">
-      <div class="hero-photo-glow"></div>
+    <div class="hero-photo-col">
       <img src="assets/profile-photo.png" alt="Mitnala Shiva Jyothiradithya" class="hero-photo">
+      <div class="social-links">
+        <a href="mailto:jyothiradit1@iisc.ac.in" class="social-link">Email</a>
+        <a href="https://github.com/msja1729" class="social-link" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" class="social-link" data-placeholder="true">LinkedIn</a>
+      </div>
     </div>
 
     <div class="hero-content">
       <h1 class="hero-name">Mitnala Shiva Jyothiradithya</h1>
-      <p class="hero-title">B.Tech in Mathematics and Computing, Indian Institute of Science</p>
+      <p class="hero-title">B.Tech in Mathematics and Computing, Indian Institute of Science, Bengaluru</p>
 
       <ul class="hero-facts">
-        <li><span class="fact-label">Degree</span><span class="fact-value">B.Tech, Mathematics and Computing — IISc (2024–2028), CGPA 8.9</span></li>
+        <li><span class="fact-label">Degree</span><span class="fact-value">B.Tech, Mathematics and Computing — IISc (2024–2028), CGPA 8.92 (through Semester 4)</span></li>
         <li><span class="fact-label">Class XII</span><span class="fact-value">99.1% — Sri Chaitanya Junior College (2024)</span></li>
         <li><span class="fact-label">Class X</span><span class="fact-value">98.4% — Montessori Indus EM Primary School (2022)</span></li>
+        <li><span class="fact-label">Location</span><span class="fact-value">Bengaluru, India</span></li>
         <li><span class="fact-label">Languages</span><span class="fact-value">English, Telugu, Hindi</span></li>
       </ul>
+
+      <div class="skills">
+        <h2 class="skills-heading">Technical Skills</h2>
+        <ul class="skills-list">
+          <li><span class="skill-label">Programming</span><span class="skill-value">Python (NumPy, SciPy, Matplotlib, PyTorch), C++ (STL), Lean</span></li>
+          <li><span class="skill-label">Mathematics</span><span class="skill-value">Linear Algebra, Probability &amp; Statistics, Optimization, Numerical Methods, Real Analysis</span></li>
+          <li><span class="skill-label">Algorithms</span><span class="skill-value">Sorting, Trees, Graph Algorithms, Dynamic Programming, Gradient Descent, XGBoost</span></li>
+          <li><span class="skill-label">Tools &amp; Frameworks</span><span class="skill-value">FastAPI, SQL, GRPO / RL Pipelines, Vision-Language Models</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section id="experience" class="section">
     <h2 class="section-title">Experience</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">FSID, Indian Institute of Science</h3>
+        <span class="card-role">Software Engineering Intern</span>
+        <span class="card-date">Nov 2025 – Dec 2025</span>
+      </div>
+      <ul class="card-list">
+        <li>Spearheaded the creation of <strong>Alumni Net</strong>, an integrated platform designed to foster academic and professional networking within ProblemNet.</li>
+        <li>Designed and implemented the end-to-end user flow allowing users to submit complex technical problem statements and immediately receive a curated list of matching alumni profiles.</li>
+        <li>Integrated the Alumni Net feature into the larger ProblemNet architecture, enhancing the platform's overall utility for academic problem-solving.</li>
+      </ul>
+    </div>
 
     <div class="card">
       <div class="card-header">
@@ -64,10 +90,10 @@
       </div>
       <p class="card-project-name">BulletproofTemplateS</p>
       <ul class="card-list">
-        <li>Engineered a context-aware web templating engine from scratch in Lean, designed to fundamentally prevent Cross-Site Scripting (XSS) vulnerabilities.</li>
-        <li>Built a custom recursive-descent parser and lexer that processes HTML, CSS, JavaScript, JSON, and Jinja-style logic into an Abstract Syntax Tree (AST).</li>
-        <li>Developed a context-aware escaping engine that structurally analyzes the AST to automatically apply the correct sanitization rules (HTML, JS, CSS, or JSON contexts).</li>
-        <li>Formally verified the engine with machine-checked proofs to provide mathematically rigorous guarantees of correctness, security, and stability across all possible inputs.</li>
+        <li>Architected BulletproofTemplateS, a context-aware web templating engine built from scratch in Lean, providing mathematically rigorous guarantees against Cross-Site Scripting (XSS) vulnerabilities.</li>
+        <li>Engineered and formally verified a custom recursive-descent parser and lexer that processes HTML, CSS, JavaScript, JSON, and Jinja-style logic into an Abstract Syntax Tree (AST).</li>
+        <li>Developed a context-aware escaping engine that structurally analyzes the AST to automatically apply correct sanitization rules across HTML, JS, CSS, and JSON contexts.</li>
+        <li>Verified overall correctness, security, and stability across all possible inputs using machine-checked proofs, guaranteeing safety and liveness properties across Web and LLM environments.</li>
       </ul>
     </div>
   </section>
@@ -77,14 +103,28 @@
 
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Fine-Tuning of a Liquid Model</h3>
+        <h3 class="card-title">Fine-Tuning of a Liquid Foundation Model</h3>
         <span class="card-role">ML Researcher</span>
         <span class="card-date">May 2026 – Jun 2026</span>
       </div>
       <ul class="card-list">
-        <li><strong>Pipeline Engineering:</strong> Engineered a custom reinforcement learning pipeline, integrating a GRPO trainer with self-designed reward functions for logical correctness and strict format adherence.</li>
-        <li><strong>Model Enhancement:</strong> Applied this pipeline to fine-tune a Liquid Foundation Model, substantially improving its mathematical reasoning and problem-solving performance on the GSM8k benchmark.</li>
-        <li>Evaluated the model across standard industry benchmarks, demonstrating substantial improvements in mathematical reasoning and strict formatting.</li>
+        <li>Engineered a custom reinforcement learning pipeline, integrating a GRPO trainer with self-designed reward functions for logical correctness and strict format adherence.</li>
+        <li>Applied the pipeline to fine-tune a Liquid Foundation Model, substantially improving its mathematical reasoning and problem-solving performance on the GSM8k benchmark.</li>
+        <li>Evaluated the model across standard industry benchmarks, demonstrating measurable gains in mathematical reasoning and output formatting.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">XAI and Gradient Boosted Tree Models</h3>
+        <span class="card-role">ML Researcher</span>
+        <span class="card-date">Mar 2026 – Apr 2026</span>
+      </div>
+      <ul class="card-list">
+        <li>Replicated foundational XGBoost benchmarks to validate core optimizations, including second-order Taylor approximations and sparsity-aware split finding across diverse predictive tasks.</li>
+        <li>Benchmarked exact greedy versus approximate methods on the HIGGS dataset (11M events) for competitive AUC, and analyzed Learning-to-Rank algorithms on MQ2008, confirming a 1% NDCG@10 improvement with 2x faster training.</li>
+        <li>Evaluated sparsity handling using the Adult dataset and a 10k subset of the Allstate dataset, demonstrating consistent precision and significant reductions in training time.</li>
+        <li>Analyzed Disk I/O versus compute trade-offs, measuring linear loading scalability (~1.6M rows/s) and profiling block compression overheads in RAM-heavy environments.</li>
       </ul>
     </div>
   </section>
@@ -96,8 +136,22 @@
       <li>Secured State 2nd Rank in the State Board Intermediate Examinations.</li>
       <li>Secured All India Rank (AIR) 1529 and EWS Rank 180 in JEE Main.</li>
       <li>Secured All India Rank (AIR) 1903 and EWS Rank 175 in JEE Advanced.</li>
+      <li>Awarded 2nd Place in the NPCI Hackathon conducted at the Indian Institute of Science (IISc).</li>
       <li>Current recipient of the KVB Scholarship Program (₹1,00,000/year), awarded by Karur Vysya Bank.</li>
     </ul>
+
+    <h3 class="subsection-title">Talks &amp; Presentations</h3>
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">PageRank Algorithm and the Ergodic Theorem</h3>
+        <span class="card-role">Technical Talk, Indian Institute of Science</span>
+      </div>
+      <ul class="card-list">
+        <li>Delivered a technical presentation on the PageRank algorithm formulated as a Markov chain.</li>
+        <li>Explained the role of stochastic matrices, stationary distributions, and eigenvectors in ranking.</li>
+        <li>Discussed convergence guarantees using the ergodic theorem and irreducibility assumptions, and analyzed the effect of the damping factor on convergence speed and ranking stability.</li>
+      </ul>
+    </div>
   </section>
 
   <section id="interests" class="section">
@@ -107,11 +161,8 @@
 
 </main>
 
-<!-- Footer links are placeholders — update with real profile URLs later. -->
 <footer class="footer">
-  <a href="mailto:jyothiradithyams1729@gmail.com" class="footer-link" data-placeholder="false">Email</a>
-  <a href="#" class="footer-link" data-placeholder="true">LinkedIn</a>
-  <a href="#" class="footer-link" data-placeholder="true">GitHub</a>
+  <span>&copy; 2026 Mitnala Shiva Jyothiradithya</span>
 </footer>
 
 <script src="js/main.js" defer></script>

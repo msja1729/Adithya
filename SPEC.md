@@ -24,69 +24,88 @@ Build a personal portfolio website for **Mitnala Shiva Jyothiradithya**, B.Tech 
 
 ## 3. Inputs
 
-- **CV:** `CV_final.pdf` (in project directory) — source of truth for all text content (see Section 6).
+- **CV:** `CV_final.pdf` (in `assets/`, sourced from `CV_Latest (3).pdf`) — source of truth for all text content (see Section 7).
 - **Photo:** `profile photo.png` (in project directory) — used as the profile image (see Section 5).
 
 ## 4. Visual Theme
 
-- **Background:** Dark mode. Base background color in the near-black range (e.g. `#0a0a0f`–`#121218`), not pure black, so purple glows have room to read against it.
-- **Accent color:** Purple (e.g. `#8b5cf6` / `#a855f7` range) used for glows, borders, and highlight text.
-- **Glow effect:** Soft `box-shadow` / `filter: blur()` purple glows radiating around key elements — the profile image, the navigation bar corners, and section headings/cards on hover. Glows should be subtle (low opacity, large blur radius) rather than solid neon outlines.
-- **Typography:** Clean sans-serif (e.g. system font stack or a Google Font like Inter/Poppins), light-colored text (off-white, e.g. `#e5e5e5`) for readability against the dark background.
+- **Background:** Light mode only — no dark mode, no theme toggle. Base background is white or near-white (e.g. `#ffffff`–`#fafafa`).
+- **Accent color:** A single clean accent (e.g. a muted blue/indigo or the user's preferred color, TBD at implementation) used sparingly for links, highlights, and hover states — no glow effects.
+- **Visual style:** Flat, clean, minimal. Subtle borders (`#e5e5e5` range) and soft drop-shadows (e.g. `0 1px 3px rgba(0,0,0,0.08)`) to separate cards/sections instead of glows.
+- **Typography:** Clean sans-serif (e.g. system font stack or a Google Font like Inter/Poppins), dark text (e.g. `#1a1a1a`) on the white background for readability and contrast.
 
 ## 5. Profile Image
 
 - Source file: `profile photo.png`.
-- Displayed using an **inverted triangle shape** via CSS `clip-path` (e.g. `clip-path: polygon(0 0, 100% 0, 50% 100%)`), so the image is widest at the top and comes to a point at the bottom.
-- A soft purple glow (blurred box-shadow) surrounds the shape.
-- Placed prominently, likely in a hero/header area alongside the name and title ("B.Tech in Mathematics and Computing, IISc").
+- Displayed as a square photo (slight corner rounding only, e.g. `border-radius: 8px`, not circular) with a subtle border and soft drop-shadow — no clip-path point shapes, no glow.
+- Place it at the top-left corner. Underneath it, place links to social accounts.
 
 ## 6. Navigation Bar
 
 - **Position:** Fixed/sticky at the top of the viewport, visible on scroll.
-- **Background:** Transparent (or semi-transparent with a slight blur/backdrop-filter for legibility over content scrolling beneath it).
-- **Glow:** Purple glow concentrated at the **top-left** and **bottom-right** corners of the nav bar, fading toward the center — not a uniform border glow.
+- **Background:** White or semi-transparent white with a slight blur/backdrop-filter for legibility over content scrolling beneath it, plus a thin bottom border to separate it from the page.
 - **Tabs (in order):**
-  1. About
+  1. About Me
   2. Experience
   3. Projects
   4. Achievements
   5. Personal Interests
 - **Behavior:** Single-page layout — each tab is an anchor link (`#about`, `#experience`, etc.) that smooth-scrolls to the corresponding section on the same page (no separate pages/routes).
-- **Active state:** The current section's tab should be visually highlighted (e.g. purple underline or glow) as the user scrolls.
+- **Active state:** The current section's tab should be visually highlighted (e.g. accent-colored underline or bold text) as the user scrolls.
 
 ## 7. Section Content (sourced from CV)
 
 ### 7.1 About
 - Name: Mitnala Shiva Jyothiradithya
-- Degree: B.Tech in Mathematics and Computing, Indian Institute of Science (2024–2028), CGPA 8.9
+- Contact: jyothiradit1@iisc.ac.in · github.com/msja1729 · Bengaluru, India
+- Degree: B.Tech in Mathematics and Computing, Indian Institute of Science (2024–2028), CGPA 8.92 (through Semester 4)
 - Prior academics: Class XII (Board of Intermediate Education, AP) — 99.1%, Sri Chaitanya Junior College, 2024; Class X (CBSE) — 98.4%, Montessori Indus EM Primary School, 2022
 - Languages: English, Telugu, Hindi
+- Technical Skills:
+  - Programming: Python (NumPy, SciPy, Matplotlib, PyTorch), C++ (STL), Lean
+  - Mathematics: Linear Algebra, Probability & Statistics, Optimization, Numerical Methods, Real Analysis
+  - Algorithms: Sorting, Trees, Graph Algorithms, Dynamic Programming, Gradient Descent, XGBoost
+  - Tools & Frameworks: FastAPI, SQL, GRPO / RL Pipelines, Vision-Language Models
 
 ### 7.2 Experience
+- **FSID, Indian Institute of Science** — Software Engineering Intern, Nov 2025 – Dec 2025
+  - Spearheaded the creation of *Alumni Net*, an integrated platform designed to foster academic and professional networking within ProblemNet.
+  - Designed and implemented the end-to-end user flow allowing users to submit complex technical problem statements and immediately receive a curated list of matching alumni profiles.
+  - Integrated the Alumni Net feature into the larger ProblemNet architecture, enhancing the platform's overall utility for academic problem-solving.
 - **Emergence AI** — Research Intern, May 2026 – Jul 2026
-  - Project: *BulletproofTemplateS* — a context-aware web templating engine built from scratch in Lean to structurally prevent Cross-Site Scripting (XSS) vulnerabilities.
-  - Built a custom recursive-descent parser and lexer processing HTML, CSS, JavaScript, JSON, and Jinja-style logic into an Abstract Syntax Tree (AST).
-  - Developed a context-aware escaping engine that analyzes the AST to apply correct sanitization rules per context (HTML, JS, CSS, JSON).
-  - Formally verified the engine with machine-checked proofs for mathematically rigorous correctness, security, and stability guarantees.
+  - Project: *BulletproofTemplateS* — a context-aware web templating engine built from scratch in Lean, providing mathematically rigorous guarantees against Cross-Site Scripting (XSS) vulnerabilities.
+  - Engineered and formally verified a custom recursive-descent parser and lexer processing HTML, CSS, JavaScript, JSON, and Jinja-style logic into an Abstract Syntax Tree (AST).
+  - Developed a context-aware escaping engine that structurally analyzes the AST to automatically apply correct sanitization rules across HTML, JS, CSS, and JSON contexts.
+  - Verified overall correctness, security, and stability across all possible inputs using machine-checked proofs, guaranteeing safety and liveness properties across Web and LLM environments.
 
 ### 7.3 Projects
-- **Fine-Tuning of a Liquid Model** — ML Researcher, May 2026 – Jun 2026
+- **Fine-Tuning of a Liquid Foundation Model** — ML Researcher, May 2026 – Jun 2026
   - Engineered a custom reinforcement learning pipeline integrating a GRPO trainer with self-designed reward functions for logical correctness and strict format adherence.
-  - Fine-tuned a Liquid Foundation Model, substantially improving mathematical reasoning and problem-solving performance on the GSM8k benchmark.
-  - Evaluated the model across standard industry benchmarks, demonstrating measurable improvements in reasoning and formatting adherence.
+  - Applied the pipeline to fine-tune a Liquid Foundation Model, substantially improving its mathematical reasoning and problem-solving performance on the GSM8k benchmark.
+  - Evaluated the model across standard industry benchmarks, demonstrating measurable gains in mathematical reasoning and output formatting.
+- **XAI and Gradient Boosted Tree Models** — ML Researcher, Mar 2026 – Apr 2026
+  - Replicated foundational XGBoost benchmarks to validate core optimizations, including second-order Taylor approximations and sparsity-aware split finding across diverse predictive tasks.
+  - Benchmarked exact greedy versus approximate methods on the HIGGS dataset (11M events), and analyzed Learning-to-Rank algorithms on MQ2008, confirming a 1% NDCG@10 improvement with 2x faster training.
+  - Evaluated sparsity handling using the Adult dataset and a 10k subset of the Allstate dataset, demonstrating consistent precision and significant reductions in training time.
+  - Analyzed Disk I/O versus compute trade-offs, measuring linear loading scalability (~1.6M rows/s) and profiling block compression overheads in RAM-heavy environments.
 
 ### 7.4 Achievements
 - Secured State 2nd Rank in the State Board Intermediate Examinations.
 - Secured All India Rank (AIR) 1529 and EWS Rank 180 in JEE Main.
 - Secured All India Rank (AIR) 1903 and EWS Rank 175 in JEE Advanced.
+- Awarded 2nd Place in the NPCI Hackathon conducted at the Indian Institute of Science (IISc).
 - Current recipient of the KVB Scholarship Program (₹1,00,000/year), awarded by Karur Vysya Bank.
+- **Talks & Presentations** (rendered as a sub-section under Achievements):
+  - *PageRank Algorithm and the Ergodic Theorem* — Technical Talk, Indian Institute of Science.
+    - Delivered a technical presentation on the PageRank algorithm formulated as a Markov chain.
+    - Explained the role of stochastic matrices, stationary distributions, and eigenvectors in ranking.
+    - Discussed convergence guarantees using the ergodic theorem and irreducibility assumptions, and analyzed the effect of the damping factor on convergence speed and ranking stability.
 
 ### 7.5 Personal Interests
 - **Content TBD** — this section is a placeholder for now. Render it with a heading and a "Coming soon" / placeholder note so the section is visibly present and easy to fill in later.
 
 ### 7.6 Courses (optional supplementary content)
-- Not part of the requested nav tabs, but available from the CV as an optional "Coursework" list under About or Achievements if a fuller academic picture is wanted later: Analysis & Linear Algebra I/II, Algorithms and Programming, Computer Systems, Discrete Mathematics, Probability and Statistics, Numerical Methods, Data Structures and Algorithms, Introduction to Basic Analysis, Introduction to Algebraic Structures, Introduction to AI and Machine Learning, Automata and Computability, Introduction to NLP (PG), Introduction to Electrical and Electronics Engineering.
+- Not part of the requested nav tabs, but available from the CV as an optional "Coursework" list under About or Achievements if a fuller academic picture is wanted later: Real Analysis, Linear Algebra I & II, Discrete Mathematics, Probability and Statistics, Numerical Methods, Data Structures and Algorithms, Algebraic Structures, Automata and Computability, Computer Systems, Algorithms and Programming, Introduction to AI and Machine Learning, Introduction to NLP (PG), Introduction to Electrical and Electronics Engineering.
 
 ## 8. Responsiveness
 
@@ -97,4 +116,4 @@ Build a personal portfolio website for **Mitnala Shiva Jyothiradithya**, B.Tech 
 
 - No backend, contact form submission, or CMS — content is static and hand-authored in HTML.
 - Personal Interests content to be supplied later (Section 7.5).
-- Exact hex values for background/purple glow and font choice are implementation details left to the build step, within the ranges given in Section 4.
+- Exact hex values for background/accent color and font choice are implementation details left to the build step, within the ranges given in Section 4.
