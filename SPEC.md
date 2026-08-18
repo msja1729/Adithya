@@ -106,7 +106,12 @@ Build a personal portfolio website for **Mitnala Shiva Jyothiradithya**, B.Tech 
     - Discussed convergence guarantees using the ergodic theorem and irreducibility assumptions, and analyzed the effect of the damping factor on convergence speed and ranking stability.
 
 ### 7.5 Hobbies
-- **Content TBD** — this section is a placeholder for now. Render it with a heading and a "Coming soon" / placeholder note so the section is visibly present and easy to fill in later.
+- **Journaling** — Keeping a regular journal to reflect on ideas and stay organized.
+- **Playing the Flute** — Playing the flute in free time.
+- **Reading** — Currently reading *How to Win Friends and Influence People* by Dale Carnegie.
+- **Sports** — Playing badminton, cricket, and other sports.
+
+Rendered as a 4-card grid (`.hobby-grid` / `.hobby-card` in `css/style.css`), matching the flat card style used elsewhere on the site (surface background, subtle border, soft shadow, accent-colored border on hover).
 
 ### 7.6 Courses (optional supplementary content)
 - Not part of the requested nav tabs, but available from the CV as an optional "Coursework" list under About or Achievements if a fuller academic picture is wanted later: Real Analysis, Linear Algebra I & II, Discrete Mathematics, Probability and Statistics, Numerical Methods, Data Structures and Algorithms, Algebraic Structures, Automata and Computability, Computer Systems, Algorithms and Programming, Introduction to AI and Machine Learning, Introduction to NLP (PG), Introduction to Electrical and Electronics Engineering.
@@ -119,5 +124,4 @@ Build a personal portfolio website for **Mitnala Shiva Jyothiradithya**, B.Tech 
 ## 9. Out of Scope / Open Questions
 
 - No backend, contact form submission, or CMS — content is static and hand-authored in HTML.
-- Hobbies content to be supplied later (Section 7.5).
 - Exact hex values for background/accent color and font choice are implementation details left to the build step, within the ranges given in Section 4.
