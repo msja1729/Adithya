@@ -1,20 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mitnala Shiva Jyothiradithya — Portfolio</title>
+<meta name="description" content="Portfolio of Mitnala Shiva Jyothiradithya — B.Tech Mathematics and Computing, IISc Bengaluru. ML, RL pipelines, AI security and formal verification.">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header class="navbar">
+<canvas id="bgCanvas" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-dot hidden" aria-hidden="true"></div>
+<div class="cursor-ring hidden" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<header class="navbar" id="navbar">
   <div class="navbar-inner">
+    <a href="#about" class="logo magnetic" aria-label="Back to top">MSJ<span>.</span></a>
+
     <nav class="nav-links" id="navLinks">
-      <a href="#about" class="nav-link">About Me</a>
+      <a href="#about" class="nav-link">About</a>
       <a href="#experience" class="nav-link">Experience</a>
       <a href="#projects" class="nav-link">Projects</a>
       <a href="#achievements" class="nav-link">Achievements</a>
@@ -22,163 +42,291 @@
       <a href="assets/CV_final.pdf" class="nav-resume" target="_blank" rel="noopener">Resume</a>
     </nav>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <div class="nav-actions">
+      <button class="theme-toggle magnetic" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme (T)">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><g stroke-linecap="round"><line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/><line x1="4.6" y1="4.6" x2="6.4" y2="6.4"/><line x1="17.6" y1="17.6" x2="19.4" y2="19.4"/><line x1="4.6" y1="19.4" x2="6.4" y2="17.6"/><line x1="17.6" y1="6.4" x2="19.4" y2="4.6"/></g></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
 <main>
 
-  <section id="about" class="section hero">
-    <div class="hero-photo-col">
-      <img src="assets/profile-photo.png" alt="Mitnala Shiva Jyothiradithya" class="hero-photo">
-      <div class="social-links">
-        <a href="mailto:jyothiradit1@iisc.ac.in" class="social-link">Email</a>
-        <a href="https://github.com/msja1729" class="social-link" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/jyothiradithya-mitnala-shiva-5700713a0/" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
+  <!-- ================= HERO ================= -->
+  <section id="about" class="hero">
+    <div class="hero-text">
+      <p class="eyebrow reveal"><span class="pulse"></span> Hi there, I'm</p>
+      <h1 class="hero-name reveal" id="heroName" aria-label="Mitnala Shiva Jyothiradithya">
+        <span class="name-line">Mitnala Shiva</span>
+        <span class="name-line gradient-text">Jyothiradithya</span>
+      </h1>
+      <p class="hero-typed reveal">
+        <span class="mono">&gt;</span> <span id="typed"></span><span class="caret">|</span>
+      </p>
+      <p class="hero-intro reveal">I'm a 3rd-year B.Tech student in Mathematics and Computing at the <strong>Indian Institute of Science, Bengaluru</strong>. I'm interested in Machine Learning, RAG pipelines and RL pipelines, among other areas, and I'm currently exploring Computer Systems Security and High-Performance Computing (HPC).</p>
+
+      <div class="hero-cta reveal">
+        <a href="#projects" class="btn btn-primary magnetic"><span>View my work</span></a>
+        <a href="assets/CV_final.pdf" class="btn btn-ghost magnetic" target="_blank" rel="noopener"><span>Download résumé</span></a>
+      </div>
+
+      <div class="social-links reveal">
+        <a href="mailto:jyothiradit1@iisc.ac.in" class="social-link magnetic" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </a>
+        <a href="https://github.com/msja1729" class="social-link magnetic" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="filled"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/jyothiradithya-mitnala-shiva-5700713a0/" class="social-link magnetic" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="filled"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>
+        </a>
+        <span class="location mono">Bengaluru, India</span>
       </div>
     </div>
 
-    <div class="hero-content">
-      <h1 class="hero-name">Mitnala Shiva Jyothiradithya</h1>
-      <p class="hero-title">B.Tech in Mathematics and Computing, Indian Institute of Science, Bengaluru</p>
+    <div class="hero-visual reveal">
+      <div class="photo-wrap tilt" id="photoWrap">
+        <div class="photo-ring"></div>
+        <div class="photo-glow"></div>
+        <img src="assets/profile-photo.png" alt="Mitnala Shiva Jyothiradithya" class="hero-photo">
+        <span class="orbit-tag t1 mono">Lean 4</span>
+        <span class="orbit-tag t2 mono">PyTorch</span>
+        <span class="orbit-tag t3 mono">GRPO</span>
+        <span class="orbit-tag t4 mono">AI Security</span>
+      </div>
+    </div>
 
-      <p class="hero-intro">I'm Mitnala Shiva Jyothiradithya, currently pursuing my B.Tech in Mathematics and Computing (3rd year) at the Indian Institute of Science, Bengaluru. I'm interested in Machine Learning, RAG pipelines, and RL pipelines, among other areas, and I'm currently exploring the fields of Computer Systems Security and High-Performance Computing (HPC).</p>
+    <a href="#stats" class="scroll-hint" aria-label="Scroll down"><span></span></a>
+  </section>
 
-      <div class="education">
-        <h2 class="education-heading">Education</h2>
-        <ul class="education-list">
+  <!-- ================= STATS ================= -->
+  <section id="stats" class="stats">
+    <div class="stat reveal"><span class="stat-num" data-count="8.92" data-decimals="2">0</span><span class="stat-label">CGPA at IISc</span></div>
+    <div class="stat reveal"><span class="stat-num" data-count="2" data-prefix="#">0</span><span class="stat-label">State Rank, Intermediate</span></div>
+    <div class="stat reveal"><span class="stat-num" data-count="2">0</span><span class="stat-label">Hackathon podiums</span></div>
+    <div class="stat reveal"><span class="stat-num" data-count="460" data-suffix="+">0</span><span class="stat-label">Unit tests on SMRITI</span></div>
+  </section>
+
+  <!-- ================= ABOUT DETAILS ================= -->
+  <section class="section" id="background" data-nav="about">
+    <div class="section-head reveal">
+      <span class="section-index mono">01</span>
+      <h2 class="section-title">Background</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="card glass reveal">
+        <h3 class="card-kicker mono">// education</h3>
+        <ul class="edu-list">
           <li>
-            <span class="education-degree">B.Tech, Mathematics and Computing</span>
-            <span class="education-detail">Indian Institute of Science (2024–2028) · CGPA 8.92 (through Semester 4)</span>
+            <span class="edu-year mono">2024 – 2028</span>
+            <span class="edu-degree">B.Tech, Mathematics and Computing</span>
+            <span class="edu-detail">Indian Institute of Science · CGPA 8.92 (through Semester 4)</span>
           </li>
           <li>
-            <span class="education-degree">Class XII — AP State Board</span>
-            <span class="education-detail">Board of Intermediate Education, AP · Sri Chaitanya Junior College · 99.1% · 2024</span>
+            <span class="edu-year mono">2024</span>
+            <span class="edu-degree">Class XII — AP State Board</span>
+            <span class="edu-detail">Board of Intermediate Education, AP · Sri Chaitanya Junior College · 99.1%</span>
           </li>
           <li>
-            <span class="education-degree">Class X — CBSE</span>
-            <span class="education-detail">Montessori Indus EM Primary School · 98.4% · 2022</span>
+            <span class="edu-year mono">2022</span>
+            <span class="edu-degree">Class X — CBSE</span>
+            <span class="edu-detail">Montessori Indus EM Primary School · 98.4%</span>
           </li>
         </ul>
+        <div class="facts">
+          <span class="fact"><span class="mono">location</span> Bengaluru, India</span>
+          <span class="fact"><span class="mono">languages</span> English · Telugu · Hindi</span>
+        </div>
       </div>
 
-      <ul class="hero-facts">
-        <li><span class="fact-label">Location</span><span class="fact-value">Bengaluru, India</span></li>
-        <li><span class="fact-label">Languages</span><span class="fact-value">English, Telugu, Hindi</span></li>
-      </ul>
-
-      <div class="skills">
-        <h2 class="skills-heading">Technical Skills</h2>
-        <ul class="skills-list">
-          <li><span class="skill-label">Programming</span><span class="skill-value">Python (NumPy, SciPy, Matplotlib, PyTorch), C++ (STL), Lean</span></li>
-          <li><span class="skill-label">Mathematics</span><span class="skill-value">Linear Algebra, Probability &amp; Statistics, Optimization, Numerical Methods, Real Analysis</span></li>
-          <li><span class="skill-label">Algorithms</span><span class="skill-value">Sorting, Trees, Graph Algorithms, Dynamic Programming, Gradient Descent, XGBoost</span></li>
-          <li><span class="skill-label">Tools &amp; Frameworks</span><span class="skill-value">FastAPI, SQL, GRPO / RL Pipelines, Vision-Language Models</span></li>
-        </ul>
+      <div class="card glass reveal">
+        <h3 class="card-kicker mono">// technical skills</h3>
+        <div class="skill-group">
+          <span class="skill-label">Programming</span>
+          <div class="chips"><span class="chip">Python</span><span class="chip">NumPy</span><span class="chip">SciPy</span><span class="chip">Matplotlib</span><span class="chip">PyTorch</span><span class="chip">C++ (STL)</span><span class="chip">Lean</span></div>
+        </div>
+        <div class="skill-group">
+          <span class="skill-label">Mathematics</span>
+          <div class="chips"><span class="chip">Linear Algebra</span><span class="chip">Probability &amp; Statistics</span><span class="chip">Optimization</span><span class="chip">Numerical Methods</span><span class="chip">Real Analysis</span></div>
+        </div>
+        <div class="skill-group">
+          <span class="skill-label">Algorithms</span>
+          <div class="chips"><span class="chip">Sorting</span><span class="chip">Trees</span><span class="chip">Graph Algorithms</span><span class="chip">Dynamic Programming</span><span class="chip">Gradient Descent</span><span class="chip">XGBoost</span></div>
+        </div>
+        <div class="skill-group">
+          <span class="skill-label">Tools &amp; Frameworks</span>
+          <div class="chips"><span class="chip">FastAPI</span><span class="chip">SQL</span><span class="chip">GRPO / RL Pipelines</span><span class="chip">Vision-Language Models</span><span class="chip">LangGraph</span><span class="chip">pgvector</span></div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ================= EXPERIENCE ================= -->
   <section id="experience" class="section">
-    <h2 class="section-title">Experience</h2>
-
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">FSID, Indian Institute of Science</h3>
-        <span class="card-role">Software Engineering Intern</span>
-        <span class="card-date">Nov 2025 – Dec 2025</span>
-      </div>
-      <ul class="card-list">
-        <li>Spearheaded the creation of <strong>Alumni Net</strong>, an integrated platform designed to foster academic and professional networking within ProblemNet.</li>
-        <li>Designed and implemented the end-to-end user flow allowing users to submit complex technical problem statements and immediately receive a curated list of matching alumni profiles.</li>
-        <li>Integrated the Alumni Net feature into the larger ProblemNet architecture, enhancing the platform's overall utility for academic problem-solving.</li>
-      </ul>
+    <div class="section-head reveal">
+      <span class="section-index mono">02</span>
+      <h2 class="section-title">Experience</h2>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Emergence AI</h3>
-        <span class="card-role">Research Intern</span>
-        <span class="card-date">May 2026 – Jul 2026</span>
-      </div>
-      <p class="card-project-name">BulletproofTemplateS</p>
-      <ul class="card-list">
-        <li>Architected BulletproofTemplateS, a context-aware web templating engine built from scratch in Lean, providing mathematically rigorous guarantees against Cross-Site Scripting (XSS) vulnerabilities.</li>
-        <li>Engineered and formally verified a custom recursive-descent parser and lexer that processes HTML, CSS, JavaScript, JSON, and Jinja-style logic into an Abstract Syntax Tree (AST).</li>
-        <li>Developed a context-aware escaping engine that structurally analyzes the AST to automatically apply correct sanitization rules across HTML, JS, CSS, and JSON contexts.</li>
-        <li>Verified overall correctness, security, and stability across all possible inputs using machine-checked proofs, guaranteeing safety and liveness properties across Web and LLM environments.</li>
-      </ul>
+    <div class="timeline">
+      <article class="timeline-item reveal">
+        <span class="timeline-dot"></span>
+        <div class="card glass spotlight tilt">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Emergence AI</h3>
+              <span class="card-role">Research Intern</span>
+            </div>
+            <span class="card-date mono">May 2026 – Jul 2026</span>
+          </div>
+          <p class="card-sub">BulletproofTemplateS</p>
+          <ul class="card-list">
+            <li>Architected BulletproofTemplateS, a context-aware web templating engine built from scratch in Lean, providing mathematically rigorous guarantees against Cross-Site Scripting (XSS) vulnerabilities.</li>
+            <li>Engineered and formally verified a custom recursive-descent parser and lexer that processes HTML, CSS, JavaScript, JSON, and Jinja-style logic into an Abstract Syntax Tree (AST).</li>
+            <li>Developed a context-aware escaping engine that structurally analyzes the AST to automatically apply correct sanitization rules across HTML, JS, CSS, and JSON contexts.</li>
+            <li>Verified overall correctness, security, and stability across all possible inputs using machine-checked proofs, guaranteeing safety and liveness properties across Web and LLM environments.</li>
+          </ul>
+          <div class="tags"><span class="tag">Lean</span><span class="tag">Formal Verification</span><span class="tag">Parsers</span><span class="tag">Web Security</span></div>
+        </div>
+      </article>
+
+      <article class="timeline-item reveal">
+        <span class="timeline-dot"></span>
+        <div class="card glass spotlight tilt">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">FSID, Indian Institute of Science</h3>
+              <span class="card-role">Software Engineering Intern</span>
+            </div>
+            <span class="card-date mono">Nov 2025 – Dec 2025</span>
+          </div>
+          <p class="card-sub">Alumni Net</p>
+          <ul class="card-list">
+            <li>Spearheaded the creation of <strong>Alumni Net</strong>, an integrated platform designed to foster academic and professional networking within ProblemNet.</li>
+            <li>Designed and implemented the end-to-end user flow allowing users to submit complex technical problem statements and immediately receive a curated list of matching alumni profiles.</li>
+            <li>Integrated the Alumni Net feature into the larger ProblemNet architecture, enhancing the platform's overall utility for academic problem-solving.</li>
+          </ul>
+          <div class="tags"><span class="tag">Full-stack</span><span class="tag">Product Design</span><span class="tag">Integration</span></div>
+        </div>
+      </article>
     </div>
   </section>
 
+  <!-- ================= PROJECTS ================= -->
   <section id="projects" class="section">
-    <h2 class="section-title">Projects</h2>
-
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">SMRITI: Memory Firewall for AI Agents</h3>
-        <span class="card-role">Team Lead (4 members)</span>
-        <span class="card-date">AEGIS 2026, IISc Bengaluru</span>
-      </div>
-      <p class="card-project-name">Python, LangGraph, PostgreSQL + pgvector, NVIDIA Nemotron / NeMo Guardrails, Presidio, Lean 4</p>
-      <ul class="card-list">
-        <li>Built a provenance-based security layer that protects LLM agents from <strong>memory-poisoning attacks</strong>, where stored malicious text triggers harmful actions (e.g., fraudulent payments) weeks later.</li>
-        <li>Designed three checkpoints: a <strong>write gate</strong> (source-based trust labels, quarantine of instruction-like untrusted text, PII redaction), a <strong>read gate</strong> that admits only trusted memory into agent instructions, and an <strong>action check</strong> requiring human approval for risky actions to unknown destinations.</li>
-        <li>Created <strong>MemPoison-Bench</strong> (3 agents × 4 attack types × 5 seeds): cut attack success from <strong>48% to 0/60</strong>, vs. 23% for NVIDIA NeMo Guardrails, with <strong>100% clean-task completion</strong> and no measurable added latency.</li>
-        <li>Built a counterfactual <strong>Immune Auditor</strong> that replays past requests to trace a harmful action to its source memory, then rolls back that memory and everything derived from it, with <strong>0 false rollbacks</strong>.</li>
-        <li><strong>Formally verified</strong> core guarantees in Lean 4 (no trust escalation; summaries inherit the lowest input trust), backed by 460+ unit tests and differential testing against the proofs.</li>
-      </ul>
+    <div class="section-head reveal">
+      <span class="section-index mono">03</span>
+      <h2 class="section-title">Projects</h2>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Fine-Tuning of a Liquid Foundation Model</h3>
-        <span class="card-role">ML Researcher</span>
-        <span class="card-date">May 2026 – Jun 2026</span>
-      </div>
-      <ul class="card-list">
-        <li>Engineered a custom reinforcement learning pipeline, integrating a GRPO trainer with self-designed reward functions for logical correctness and strict format adherence.</li>
-        <li>Applied the pipeline to fine-tune a Liquid Foundation Model, substantially improving its mathematical reasoning and problem-solving performance on the GSM8k benchmark.</li>
-        <li>Evaluated the model across standard industry benchmarks, demonstrating measurable gains in mathematical reasoning and output formatting.</li>
-      </ul>
-    </div>
+    <div class="projects-grid">
+      <article class="card glass spotlight tilt project featured reveal">
+        <div class="badge"><span class="badge-medal">3</span> 3rd Place · AEGIS 2026 · Infosys × NVIDIA</div>
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">SMRITI: Memory Firewall for AI Agents</h3>
+            <span class="card-role">Team Lead (4 members)</span>
+          </div>
+          <span class="card-date mono">AEGIS 2026, IISc Bengaluru</span>
+        </div>
 
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">XAI and Gradient Boosted Tree Models</h3>
-        <span class="card-role">ML Researcher</span>
-        <span class="card-date">Mar 2026 – Apr 2026</span>
-      </div>
-      <ul class="card-list">
-        <li>Replicated foundational XGBoost benchmarks to validate core optimizations, including second-order Taylor approximations and sparsity-aware split finding across diverse predictive tasks.</li>
-        <li>Benchmarked exact greedy versus approximate methods on the HIGGS dataset (11M events) for competitive AUC, and analyzed Learning-to-Rank algorithms on MQ2008, confirming a 1% NDCG@10 improvement with 2x faster training.</li>
-        <li>Evaluated sparsity handling using the Adult dataset and a 10k subset of the Allstate dataset, demonstrating consistent precision and significant reductions in training time.</li>
-        <li>Analyzed Disk I/O versus compute trade-offs, measuring linear loading scalability (~1.6M rows/s) and profiling block compression overheads in RAM-heavy environments.</li>
-      </ul>
+        <div class="metrics">
+          <div class="metric"><span class="metric-num">48% → 0/60</span><span class="metric-label">attack success</span></div>
+          <div class="metric"><span class="metric-num">100%</span><span class="metric-label">clean-task completion</span></div>
+          <div class="metric"><span class="metric-num">0</span><span class="metric-label">false rollbacks</span></div>
+        </div>
+
+        <ul class="card-list">
+          <li>Built a provenance-based security layer that protects LLM agents from <strong>memory-poisoning attacks</strong>, where stored malicious text triggers harmful actions (e.g., fraudulent payments) weeks later.</li>
+          <li>Designed three checkpoints: a <strong>write gate</strong> (source-based trust labels, quarantine of instruction-like untrusted text, PII redaction), a <strong>read gate</strong> that admits only trusted memory into agent instructions, and an <strong>action check</strong> requiring human approval for risky actions to unknown destinations.</li>
+          <li>Created <strong>MemPoison-Bench</strong> (3 agents × 4 attack types × 5 seeds): cut attack success from <strong>48% to 0/60</strong>, vs. 23% for NVIDIA NeMo Guardrails, with <strong>100% clean-task completion</strong> and no measurable added latency.</li>
+          <li>Built a counterfactual <strong>Immune Auditor</strong> that replays past requests to trace a harmful action to its source memory, then rolls back that memory and everything derived from it, with <strong>0 false rollbacks</strong>.</li>
+          <li><strong>Formally verified</strong> core guarantees in Lean 4 (no trust escalation; summaries inherit the lowest input trust), backed by 460+ unit tests and differential testing against the proofs.</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">LangGraph</span><span class="tag">PostgreSQL + pgvector</span><span class="tag">NVIDIA Nemotron / NeMo Guardrails</span><span class="tag">Presidio</span><span class="tag">Lean 4</span></div>
+      </article>
+
+      <article class="card glass spotlight tilt project reveal">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Fine-Tuning of a Liquid Foundation Model</h3>
+            <span class="card-role">ML Researcher</span>
+          </div>
+          <span class="card-date mono">May 2026 – Jun 2026</span>
+        </div>
+        <ul class="card-list">
+          <li>Engineered a custom reinforcement learning pipeline, integrating a GRPO trainer with self-designed reward functions for logical correctness and strict format adherence.</li>
+          <li>Applied the pipeline to fine-tune a Liquid Foundation Model, substantially improving its mathematical reasoning and problem-solving performance on the GSM8k benchmark.</li>
+          <li>Evaluated the model across standard industry benchmarks, demonstrating measurable gains in mathematical reasoning and output formatting.</li>
+        </ul>
+        <div class="tags"><span class="tag">GRPO</span><span class="tag">RL</span><span class="tag">GSM8k</span><span class="tag">LLMs</span></div>
+      </article>
+
+      <article class="card glass spotlight tilt project reveal">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">XAI and Gradient Boosted Tree Models</h3>
+            <span class="card-role">ML Researcher</span>
+          </div>
+          <span class="card-date mono">Mar 2026 – Apr 2026</span>
+        </div>
+        <ul class="card-list">
+          <li>Replicated foundational XGBoost benchmarks to validate core optimizations, including second-order Taylor approximations and sparsity-aware split finding across diverse predictive tasks.</li>
+          <li>Benchmarked exact greedy versus approximate methods on the HIGGS dataset (11M events) for competitive AUC, and analyzed Learning-to-Rank algorithms on MQ2008, confirming a 1% NDCG@10 improvement with 2x faster training.</li>
+          <li>Evaluated sparsity handling using the Adult dataset and a 10k subset of the Allstate dataset, demonstrating consistent precision and significant reductions in training time.</li>
+          <li>Analyzed Disk I/O versus compute trade-offs, measuring linear loading scalability (~1.6M rows/s) and profiling block compression overheads in RAM-heavy environments.</li>
+        </ul>
+        <div class="tags"><span class="tag">XGBoost</span><span class="tag">HIGGS</span><span class="tag">Learning-to-Rank</span><span class="tag">Systems</span></div>
+      </article>
     </div>
   </section>
 
+  <!-- ================= ACHIEVEMENTS ================= -->
   <section id="achievements" class="section">
-    <h2 class="section-title">Achievements</h2>
+    <div class="section-head reveal">
+      <span class="section-index mono">04</span>
+      <h2 class="section-title">Achievements</h2>
+    </div>
 
-    <ul class="achievement-list">
-      <li>Secured State 2nd Rank in the State Board Intermediate Examinations.</li>
-      <li>Secured All India Rank (AIR) 1529 and EWS Rank 180 in JEE Main.</li>
-      <li>Secured All India Rank (AIR) 1903 and EWS Rank 175 in JEE Advanced.</li>
-      <li>Awarded 2nd Place in the NPCI Hackathon conducted at the Indian Institute of Science (IISc).</li>
-      <li>Won 3rd Place as team lead in the AEGIS 2026 Hackathon conducted by Infosys and NVIDIA.</li>
-      <li>Current recipient of the KVB Scholarship Program (₹1,00,000/year), awarded by Karur Vysya Bank.</li>
-    </ul>
+    <div class="achievements-grid">
+      <div class="achievement card glass spotlight reveal">
+        <span class="ach-big gradient-text">3<sup>rd</sup></span>
+        <p>Won 3rd Place as team lead in the AEGIS 2026 Hackathon conducted by Infosys and NVIDIA.</p>
+      </div>
+      <div class="achievement card glass spotlight reveal">
+        <span class="ach-big gradient-text">2<sup>nd</sup></span>
+        <p>Awarded 2nd Place in the NPCI Hackathon conducted at the Indian Institute of Science (IISc).</p>
+      </div>
+      <div class="achievement card glass spotlight reveal">
+        <span class="ach-big gradient-text">#2</span>
+        <p>Secured State 2nd Rank in the State Board Intermediate Examinations.</p>
+      </div>
+      <div class="achievement card glass spotlight reveal">
+        <span class="ach-big gradient-text">1529</span>
+        <p>Secured All India Rank (AIR) 1529 and EWS Rank 180 in JEE Main.</p>
+      </div>
+      <div class="achievement card glass spotlight reveal">
+        <span class="ach-big gradient-text">1903</span>
+        <p>Secured All India Rank (AIR) 1903 and EWS Rank 175 in JEE Advanced.</p>
+      </div>
+      <div class="achievement card glass spotlight reveal">
+        <span class="ach-big gradient-text">KVB</span>
+        <p>Current recipient of the KVB Scholarship Program (₹1,00,000/year), awarded by Karur Vysya Bank.</p>
+      </div>
+    </div>
 
-    <h3 class="subsection-title">Talks &amp; Presentations</h3>
-    <div class="card">
+    <h3 class="subsection-title reveal">Talks &amp; Presentations</h3>
+    <div class="card glass spotlight tilt reveal">
       <div class="card-header">
-        <h3 class="card-title">PageRank Algorithm and the Ergodic Theorem</h3>
-        <span class="card-role">Technical Talk, Indian Institute of Science</span>
+        <div>
+          <h3 class="card-title">PageRank Algorithm and the Ergodic Theorem</h3>
+          <span class="card-role">Technical Talk, Indian Institute of Science</span>
+        </div>
       </div>
       <ul class="card-list">
         <li>Delivered a technical presentation on the PageRank algorithm formulated as a Markov chain.</li>
@@ -188,33 +336,57 @@
     </div>
   </section>
 
+  <!-- ================= HOBBIES ================= -->
   <section id="interests" class="section">
-    <h2 class="section-title">Hobbies</h2>
+    <div class="section-head reveal">
+      <span class="section-index mono">05</span>
+      <h2 class="section-title">Hobbies</h2>
+    </div>
 
     <div class="hobby-grid">
-      <div class="hobby-card">
+      <div class="hobby-card card glass spotlight tilt reveal">
+        <span class="hobby-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 3h11a3 3 0 0 1 3 3v15H8a3 3 0 0 1-3-3z"/><path d="M9 8h6M9 12h6"/></svg>
+        </span>
         <h3 class="hobby-title">Journaling</h3>
         <p class="hobby-desc">Keeping a regular journal to reflect on ideas and stay organized.</p>
       </div>
-      <div class="hobby-card">
+      <div class="hobby-card card glass spotlight tilt reveal">
+        <span class="hobby-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 18L18 3l3 3L6 21z"/><circle cx="9" cy="15" r=".8"/><circle cx="12" cy="12" r=".8"/><circle cx="15" cy="9" r=".8"/></svg>
+        </span>
         <h3 class="hobby-title">Playing the Flute</h3>
         <p class="hobby-desc">Playing the flute in my free time.</p>
       </div>
-      <div class="hobby-card">
+      <div class="hobby-card card glass spotlight tilt reveal">
+        <span class="hobby-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M2 5c3-1.5 6-1.5 10 1 4-2.5 7-2.5 10-1v14c-3-1.5-6-1.5-10 1-4-2.5-7-2.5-10-1z"/><path d="M12 6v14"/></svg>
+        </span>
         <h3 class="hobby-title">Reading</h3>
         <p class="hobby-desc">Currently reading <em>How to Win Friends and Influence People</em> by Dale Carnegie.</p>
       </div>
-      <div class="hobby-card">
+      <div class="hobby-card card glass spotlight tilt reveal">
+        <span class="hobby-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.5 9c4 1 7 4 8 11.5M20.5 9c-4 1-7 4-8 11.5M6 4.5C9 7 15 7 18 4.5"/></svg>
+        </span>
         <h3 class="hobby-title">Sports</h3>
         <p class="hobby-desc">Playing badminton, cricket, and other sports.</p>
       </div>
     </div>
   </section>
 
+  <!-- ================= CONTACT ================= -->
+  <section class="section contact reveal" id="contact">
+    <h2 class="contact-title">Let's build something <span class="gradient-text">secure &amp; smart</span>.</h2>
+    <p class="contact-sub">Open to research collaborations, internships and interesting problems.</p>
+    <a href="mailto:jyothiradit1@iisc.ac.in" class="btn btn-primary magnetic big"><span>Say hello</span></a>
+  </section>
+
 </main>
 
 <footer class="footer">
   <span>&copy; 2026 Mitnala Shiva Jyothiradithya</span>
+  <span class="mono hint">press <kbd>T</kbd> to switch theme · click anywhere ✦</span>
 </footer>
 
 <script src="js/main.js" defer></script>
