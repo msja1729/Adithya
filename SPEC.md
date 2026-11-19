@@ -83,6 +83,11 @@ Build a personal portfolio website for **Mitnala Shiva Jyothiradithya**, B.Tech 
   - Verified overall correctness, security, and stability across all possible inputs using machine-checked proofs, guaranteeing safety and liveness properties across Web and LLM environments.
 
 ### 7.3 Projects
+- **SMRITI: Memory Firewall for AI Agents** — Team Lead (4 members), AEGIS 2026, IISc Bengaluru (listed first)
+  - Stack: Python, LangGraph, PostgreSQL + pgvector, NVIDIA Nemotron / NeMo Guardrails, Presidio, Lean 4.
+  - Provenance-based memory firewall for LLM agents against delayed memory-poisoning attacks: write gate, read gate, human-gated risky actions.
+  - MemPoison-Bench: attack success 48% → 0/60 (vs 23% for NeMo Guardrails), 100% clean-task completion, no added latency.
+  - Counterfactual Immune Auditor with 0 false rollbacks; core guarantees formally verified in Lean 4, 460+ unit tests.
 - **Fine-Tuning of a Liquid Foundation Model** — ML Researcher, May 2026 – Jun 2026
   - Engineered a custom reinforcement learning pipeline integrating a GRPO trainer with self-designed reward functions for logical correctness and strict format adherence.
   - Applied the pipeline to fine-tune a Liquid Foundation Model, substantially improving its mathematical reasoning and problem-solving performance on the GSM8k benchmark.
@@ -98,6 +103,7 @@ Build a personal portfolio website for **Mitnala Shiva Jyothiradithya**, B.Tech 
 - Secured All India Rank (AIR) 1529 and EWS Rank 180 in JEE Main.
 - Secured All India Rank (AIR) 1903 and EWS Rank 175 in JEE Advanced.
 - Awarded 2nd Place in the NPCI Hackathon conducted at the Indian Institute of Science (IISc).
+- Won 3rd Place as team lead in the AEGIS 2026 Hackathon conducted by Infosys and NVIDIA.
 - Current recipient of the KVB Scholarship Program (₹1,00,000/year), awarded by Karur Vysya Bank.
 - **Talks & Presentations** (rendered as a sub-section under Achievements):
   - *PageRank Algorithm and the Ergodic Theorem* — Technical Talk, Indian Institute of Science.

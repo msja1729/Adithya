@@ -1,0 +1,103 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.6cm,bottom=1.6cm,left=1.8cm,right=1.8cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{textcomp}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}{\large}{}{0em}{}[\vspace{-0.9em}\noindent\rule{\textwidth}{0.4pt}]
+\titlespacing*{\section}{0pt}{1.0em}{0.5em}
+
+\setlist[itemize]{leftmargin=1.5em,itemsep=0.1em,topsep=0.3em,parsep=0pt,label=$\bullet$}
+
+% \entry{Title}{Right}{Subtitle}{Right subtitle}
+\newcommand{\entry}[4]{%
+  \textbf{#1}\hfill\textbf{#2}\\
+  {\small\textit{#3}}\hfill{\small\textit{#4}}\par}
+
+\begin{document}
+
+\begin{center}
+  {\fontsize{24}{28}\selectfont Mitnala Shiva Jyothiradithya}\\[0.5em]
+  B.Tech in Mathematics and Computing $|$ Indian Institute of Science, Bengaluru\\[0.2em]
+  {\small \href{mailto:jyothiradit1@iisc.ac.in}{jyothiradit1@iisc.ac.in} \quad$|$\quad
+  \href{https://github.com/msja1729}{github.com/msja1729} \quad$|$\quad Bengaluru, India}
+\end{center}
+
+\section*{Education}
+\entry{Indian Institute of Science, Bengaluru}{2024 -- 2028}{B.Tech in Mathematics and Computing}{CGPA: 8.9 / 10 (through Semester 4)}
+\entry{Sri Chaitanya Junior College}{2024}{Class XII -- Board of Intermediate Education, Andhra Pradesh}{Percentage: 99.1}
+\entry{Montessori Indus EM Primary School}{2022}{Class X -- CBSE}{Percentage: 98.4}
+
+\section*{Experience}
+\entry{Emergence AI}{May 2026 -- Jul 2026}{Research Intern}{}
+\begin{itemize}
+  \item Architected \textbf{BulletproofTemplateS}, a context-aware web templating engine built from scratch in Lean, providing mathematically rigorous guarantees against Cross-Site Scripting (XSS) vulnerabilities.
+  \item Engineered and formally verified a custom recursive-descent parser and lexer that processes HTML, CSS, JavaScript, JSON, and Jinja-style logic into an Abstract Syntax Tree (AST).
+  \item Developed a context-aware escaping engine that structurally analyzes the AST to automatically apply correct sanitization rules across HTML, JS, CSS, and JSON contexts.
+  \item Verified overall correctness, security, and stability across all possible inputs using machine-checked proofs, guaranteeing safety and liveness properties across Web and LLM environments.
+\end{itemize}
+
+\section*{Projects}
+\entry{SMRITI: Memory Firewall for AI Agents}{AEGIS 2026, IISc Bengaluru}{Team Lead (4 members) $\cdot$ Python, LangGraph, PostgreSQL + pgvector, NeMo Guardrails, Presidio, Lean 4}{}
+\begin{itemize}
+  \item Built a provenance-based security layer that protects LLM agents from \textbf{memory-poisoning attacks}, where stored malicious text triggers harmful actions (e.g., fraudulent payments) weeks later.
+  \item Designed three checkpoints: a \textbf{write gate} (source-based trust labels, quarantine of instruction-like untrusted text, PII redaction), a \textbf{read gate} that admits only trusted memory into agent instructions, and an \textbf{action check} requiring human approval for risky actions.
+  \item Created \textbf{MemPoison-Bench} (60 attacks); cut attack success from \textbf{48\% to 0/60} vs.\ 23\% for NVIDIA NeMo Guardrails, with \textbf{100\% clean-task completion} and no measurable added latency.
+  \item Built a counterfactual \textbf{Immune Auditor} that traces a harmful action to its source memory and rolls back it and all derived memory, with \textbf{0 false rollbacks}.
+  \item \textbf{Formally verified} core guarantees in Lean 4 (no trust escalation; summaries inherit lowest input trust), backed by 460+ unit tests and differential testing against the proofs.
+\end{itemize}
+
+\entry{Fine-Tuning of a Liquid Foundation Model}{May 2026 -- Jun 2026}{ML Researcher}{}
+\begin{itemize}
+  \item Engineered a custom reinforcement learning pipeline, integrating a GRPO trainer with self-designed reward functions for logical correctness and strict format adherence.
+  \item Applied the pipeline to fine-tune a Liquid Foundation Model, substantially improving its mathematical reasoning and problem-solving performance on the GSM8k benchmark.
+  \item Evaluated the model across standard industry benchmarks, demonstrating measurable gains in mathematical reasoning and output formatting.
+\end{itemize}
+
+\entry{XAI and Gradient Boosted Tree Models}{Mar 2026 -- Apr 2026}{ML Researcher}{}
+\begin{itemize}
+  \item Replicated foundational XGBoost benchmarks to validate core optimizations, including second-order Taylor approximations and sparsity-aware split finding across diverse predictive tasks.
+  \item Benchmarked exact greedy versus approximate methods on the HIGGS dataset (11M events) for competitive AUC, and analyzed Learning-to-Rank algorithms on MQ2008, confirming a 1\% NDCG@10 improvement with 2x faster training.
+  \item Evaluated sparsity handling using the Adult dataset and a 10k subset of the Allstate dataset, demonstrating consistent precision and significant reductions in training time.
+  \item Analyzed Disk I/O versus compute trade-offs, measuring linear loading scalability ($\sim$1.6M rows/s) and profiling block compression overheads in RAM-heavy environments.
+\end{itemize}
+
+\section*{Talks \& Presentations}
+\entry{PageRank Algorithm and the Ergodic Theorem}{}{Technical Talk, Indian Institute of Science}{}
+\begin{itemize}
+  \item Delivered a technical presentation on the PageRank algorithm formulated as a Markov chain.
+  \item Explained the role of stochastic matrices, stationary distributions, and eigenvectors in ranking.
+  \item Discussed convergence guarantees using the ergodic theorem and irreducibility assumptions, and analyzed the effect of the damping factor on convergence speed and ranking stability.
+\end{itemize}
+
+\section*{Achievements}
+\begin{itemize}
+  \item Secured State 2\textsuperscript{nd} Rank in the State Board Intermediate Examinations.
+  \item Secured All India Rank (AIR) 1529 and EWS Rank 180 in JEE Main.
+  \item Secured All India Rank (AIR) 1903 and EWS Rank 175 in JEE Advanced.
+  \item Awarded 2\textsuperscript{nd} Place in the NPCI Hackathon conducted at the Indian Institute of Science (IISc).
+  \item Won 3\textsuperscript{rd} Place as team lead in the AEGIS 2026 Hackathon conducted by Infosys and NVIDIA.
+  \item Current recipient of the KVB Scholarship Program (Rs.\ 1,00,000/year), awarded by Karur Vysya Bank.
+\end{itemize}
+
+\section*{Technical Skills}
+\begin{itemize}
+  \item \textbf{Programming:} Python (NumPy, SciPy, Matplotlib, PyTorch), C++ (STL), Lean
+  \item \textbf{Mathematics:} Linear Algebra, Probability \& Statistics, Optimization, Numerical Methods, Real Analysis
+  \item \textbf{Algorithms:} Sorting, Trees, Graph Algorithms, Dynamic Programming, Gradient Descent, XGBoost
+  \item \textbf{Tools \& Frameworks:} FastAPI, SQL, GRPO / RL Pipelines, Vision-Language Models, LangGraph, pgvector
+\end{itemize}
+
+\section*{Relevant Coursework}
+Real Analysis $\bullet$ Linear Algebra I \& II $\bullet$ Discrete Mathematics $\bullet$ Probability and Statistics $\bullet$ Numerical Methods $\bullet$ Data Structures and Algorithms $\bullet$ Algebraic Structures $\bullet$ Automata and Computability $\bullet$ Computer Systems $\bullet$ Algorithms and Programming $\bullet$ Introduction to AI and Machine Learning $\bullet$ Introduction to Natural Language Processing (PG) $\bullet$ Introduction to Electrical and Electronics Engineering
+
+\section*{Languages}
+English $\bullet$ Telugu $\bullet$ Hindi
+
+\end{document}

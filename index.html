@@ -120,6 +120,22 @@
 
     <div class="card">
       <div class="card-header">
+        <h3 class="card-title">SMRITI: Memory Firewall for AI Agents</h3>
+        <span class="card-role">Team Lead (4 members)</span>
+        <span class="card-date">AEGIS 2026, IISc Bengaluru</span>
+      </div>
+      <p class="card-project-name">Python, LangGraph, PostgreSQL + pgvector, NVIDIA Nemotron / NeMo Guardrails, Presidio, Lean 4</p>
+      <ul class="card-list">
+        <li>Built a provenance-based security layer that protects LLM agents from <strong>memory-poisoning attacks</strong>, where stored malicious text triggers harmful actions (e.g., fraudulent payments) weeks later.</li>
+        <li>Designed three checkpoints: a <strong>write gate</strong> (source-based trust labels, quarantine of instruction-like untrusted text, PII redaction), a <strong>read gate</strong> that admits only trusted memory into agent instructions, and an <strong>action check</strong> requiring human approval for risky actions to unknown destinations.</li>
+        <li>Created <strong>MemPoison-Bench</strong> (3 agents × 4 attack types × 5 seeds): cut attack success from <strong>48% to 0/60</strong>, vs. 23% for NVIDIA NeMo Guardrails, with <strong>100% clean-task completion</strong> and no measurable added latency.</li>
+        <li>Built a counterfactual <strong>Immune Auditor</strong> that replays past requests to trace a harmful action to its source memory, then rolls back that memory and everything derived from it, with <strong>0 false rollbacks</strong>.</li>
+        <li><strong>Formally verified</strong> core guarantees in Lean 4 (no trust escalation; summaries inherit the lowest input trust), backed by 460+ unit tests and differential testing against the proofs.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
         <h3 class="card-title">Fine-Tuning of a Liquid Foundation Model</h3>
         <span class="card-role">ML Researcher</span>
         <span class="card-date">May 2026 – Jun 2026</span>
@@ -154,6 +170,7 @@
       <li>Secured All India Rank (AIR) 1529 and EWS Rank 180 in JEE Main.</li>
       <li>Secured All India Rank (AIR) 1903 and EWS Rank 175 in JEE Advanced.</li>
       <li>Awarded 2nd Place in the NPCI Hackathon conducted at the Indian Institute of Science (IISc).</li>
+      <li>Won 3rd Place as team lead in the AEGIS 2026 Hackathon conducted by Infosys and NVIDIA.</li>
       <li>Current recipient of the KVB Scholarship Program (₹1,00,000/year), awarded by Karur Vysya Bank.</li>
     </ul>
 
